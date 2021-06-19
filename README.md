@@ -1,6 +1,6 @@
 A simple login app built in Kotlin.
 
-To login after launching the app, enter "yapcm96" for username and "1234" for password. 
+To login after launching the app, enter "testuser" for username and "1234" for password. 
 
 The app demonstrates a few things:
 - Login Validation

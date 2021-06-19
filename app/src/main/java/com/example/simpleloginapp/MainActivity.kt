@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
             if(username.text.isNullOrBlank() || password.text.isNullOrBlank()) {
                 Toast.makeText(this, "Please fill in all the fields", Toast.LENGTH_SHORT).show()
             }
-            else if (username.text.toString() != "yapcm96") {
+            else if (username.text.toString() != "testuser") {
                 Toast.makeText(this, "Incorrect username or password", Toast.LENGTH_SHORT).show()
             } //for some reason the && operator doesn't work
             else if (password.text.toString() != "1234") {
