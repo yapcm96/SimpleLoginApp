@@ -8,4 +8,4 @@ The app demonstrates a few things:
   - Similarly, if the credentials are incorrect a Toast message will display to say the credentials are incorrect.
 
 - ListView
-  - A simple listview to display hardcoded information.
+  - A simple listview to display hardcoded information on successful login (login button navigates to a new activity)
