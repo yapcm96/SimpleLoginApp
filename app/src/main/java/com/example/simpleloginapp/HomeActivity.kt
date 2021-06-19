@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.ListView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
 class HomeActivity : AppCompatActivity() {
@@ -18,14 +19,15 @@ class HomeActivity : AppCompatActivity() {
 
         var listView = findViewById<ListView>(R.id.homeListView)
 
-        listView.adapter = MyCustomAdapter(this) // this needs to be my custom adapter telling my list what to render
+        listView.adapter =
+            MyCustomAdapter(this) // this needs to be my custom adapter telling my list what to render
     }
 
-    private class MyCustomAdapter(context: Context): BaseAdapter() {
+    private class MyCustomAdapter(context: Context) : BaseAdapter() {
 
         private val hContext: Context = context
         private val names = arrayListOf<String>(
-            "Superman", "Batman", "Spiderman", "Dog", "Cat"
+            "Superman", "Batman", "Spiderman", "Sandman", "Wonderwoman"
         )
 
         // responsible for how many rows in my list
@@ -33,12 +35,12 @@ class HomeActivity : AppCompatActivity() {
             return names.size
         }
 
-        // you can ignore this for now
+        // you can ignore this
         override fun getItemId(position: Int): Long {
             TODO("Not yet implemented")
         }
 
-        // you can also ignore this for now
+        // you can ignore this
         override fun getItem(position: Int): Any {
             TODO("Not yet implemented")
         }
@@ -47,15 +49,16 @@ class HomeActivity : AppCompatActivity() {
         override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
             val layoutInflater = LayoutInflater.from(hContext)
             val rowHome = layoutInflater.inflate(R.layout.row_home, parent, false)
+            val element = names[position]
 
             val nameTextView = rowHome.findViewById<TextView>(R.id.name_textView)
-            nameTextView.text = names.get(position)
+            nameTextView.text = element
+
+            rowHome.setOnClickListener {
+                Toast.makeText(hContext, "$element!", Toast.LENGTH_SHORT).show()
+            }
 
             return rowHome
-//            val textView = TextView(hContext)
-//            textView.text = "HERE is my ROW for my LISTVIEW"
-//            return textView
         }
     }
-
 }
