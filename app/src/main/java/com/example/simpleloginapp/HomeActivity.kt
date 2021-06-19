@@ -17,10 +17,11 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.listview_home)
 
+
         var listView = findViewById<ListView>(R.id.homeListView)
 
         listView.adapter =
-            MyCustomAdapter(this) // this needs to be my custom adapter telling my list what to render
+            MyCustomAdapter(this) // This needs to be my custom adapter telling my list what to render
     }
 
     private class MyCustomAdapter(context: Context) : BaseAdapter() {
@@ -30,22 +31,22 @@ class HomeActivity : AppCompatActivity() {
             "Superman", "Batman", "Spiderman", "Sandman", "Wonderwoman"
         )
 
-        // responsible for how many rows in my list
+        // Responsible for how many rows in my list
         override fun getCount(): Int {
             return names.size
         }
 
-        // you can ignore this
+        // You can ignore this
         override fun getItemId(position: Int): Long {
             TODO("Not yet implemented")
         }
 
-        // you can ignore this
+        // You can ignore this
         override fun getItem(position: Int): Any {
             TODO("Not yet implemented")
         }
 
-        // responsible for rendering out each row
+        // Responsible for rendering out each row
         override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
             val layoutInflater = LayoutInflater.from(hContext)
             val rowHome = layoutInflater.inflate(R.layout.row_home, parent, false)
@@ -54,6 +55,7 @@ class HomeActivity : AppCompatActivity() {
             val nameTextView = rowHome.findViewById<TextView>(R.id.name_textView)
             nameTextView.text = element
 
+            // This is necessary to avoid app crashing when clicking on listview row
             rowHome.setOnClickListener {
                 Toast.makeText(hContext, "$element!", Toast.LENGTH_SHORT).show()
             }
